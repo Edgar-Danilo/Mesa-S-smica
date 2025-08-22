@@ -1,0 +1,95 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="d-flex flex-column justify-content-center align-items-center mt-4">
+
+
+  <h1 class="text-white">MENU PRINCIPAL</h1>
+
+  <div class="d-flex">
+
+    <div class="card m-3" style="width: 18rem;">
+      <img class="card-img-top" src="{% static 'mesa/images/imagen1.png' %}" alt="Card image cap">
+      <div class="card-body">
+        <h3 class="card-title">Mover Mesa</h3>
+        <p class="card-text">Aqui podras mover la mesa manualmente desde un deslizador que aparece en pantalla, podras visualizar en accion todos los sensores y hacer pruebas iniciales</p>
+      </div>
+
+      <div class="card-body">
+        <!--a href="/iniciar_mesa/mover_mesa/" class="card-link btn btn-primary" value="ON">Seleccionar</a -->
+        
+        <form method="POST" action="{% url 'mover_mesa'%}">
+          {% csrf_token %}
+          <button type="submit" name="accion" value="mover_mesa" class="btn btn-success">Seleccionar</button>
+ 
+        </form>
+  
+        
+      </div>
+    </div>
+
+
+    <div class="card m-3" style="width: 18rem;">
+      <img class="card-img-top" src="{% static 'mesa/images/imagen1.png' %}" alt="Card image cap">
+      
+      <div class="card-body">
+        <h3 class="card-title">Reproducir Sisimo</h3>
+        <p class="card-text">Aqui podras reproducir un sismo que esta guardado en la base de datos de la mesa sismica, tambien podras crear un informe con los resultados obtenidos por los sensores</p>
+      </div>
+
+      <div class="card-body">
+        <!-- a href="/iniciar_mesa/reproducir_sismo/" class="card-link btn btn-primary">Seleccionar</a -->
+        <form method="POST" action="{% url 'reproducir_sismo'%}">
+          {% csrf_token %}
+          <button type="submit" name="accion" value="reproducir_sismo" class="btn btn-success">Seleccionar</button>
+ 
+        </form>
+        
+      </div>
+    </div>
+
+    <div class="card m-3" style="width: 18rem;">
+      <img class="card-img-top" src="{% static 'mesa/images/imagen1.png' %}" alt="Card image cap">
+      <div class="card-body">
+        <h3 class="card-title">Crear Sismo</h3>
+        <p class="card-text">Aqui podras crear sismos y guardarlos en la base de datos para estudiarlos posteriormente con estructuras y porticos</p>
+      </div>
+
+      <div class="card-body">
+        <!-- a href="/iniciar_mesa/crear_sismo/" class="card-link btn btn-primary">Seleccionar</a -->
+        <form method="POST" action="{% url 'crear_sismo'%}">
+          {% csrf_token %}
+          <button type="submit" name="accion" value="crear_sismo" class="btn btn-success">Seleccionar</button>
+ 
+        </form>        
+      </div>
+    </div>
+
+
+    <div class="card m-3" style="width: 18rem;">
+      <img class="card-img-top" src="{% static 'mesa/images/imagen1.png' %}" alt="Card image cap">
+      <div class="card-body">
+        <h3 class="card-title">Documentacion</h3>
+        <p class="card-text">En esta zona podras consultar documentacion sobre la mesa sismica sus parametros, limites y el uso en general de todo el sistema</p>
+      </div>
+    
+      <div class="card-body">
+        <a href="/iniciar_mesa/documentacion/" class="card-link btn btn-primary">Seleccionar</a>
+         <!-- form action="/iniciar_mesa/documentacion/">
+            <button type="button" class="btn btn-primary">Seleccionar</button>
+         </form -->
+        
+        
+      </div>
+    </div>
+
+  </div>
+
+
+  
+</div>
+
+{% endblock %}
