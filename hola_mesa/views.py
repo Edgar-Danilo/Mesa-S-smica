@@ -7,7 +7,8 @@ import json
 import serial, time
 
  
-arduino = serial.Serial('COM4', 9600)
+#arduino = serial.Serial('COM3', 9600)
+arduino = "hola"
 # Abre la conexión con el Arduino (ajusta el puerto COM o /dev/ttyUSB0)
 
 
@@ -24,7 +25,7 @@ def hola_mesa(request):
 
     #arduino = serial.Serial('COM4', 9600)  # en Linux: '/dev/ttyUSB0'
     #time.sleep(1)
-    arduino.write(b'salir')  # Enviar al Arduino
+    #arduino.write(b'salir')  # Enviar al Arduino
     return render(request, "menu_principal.html")
 
 def mover_mesa(request):
@@ -34,14 +35,14 @@ def mover_mesa(request):
         if accion:
             #arduino = serial.Serial('COM4', 9600)  # en Linux: '/dev/ttyUSB0'
             #time.sleep(1)
-            arduino.write(accion.encode())  # Enviar al Arduino
+            #arduino.write(accion.encode())  # Enviar al Arduino
             #print("enviando datos a arduino")
-        return render(request, 'mover_mesa.html')  # vuelve a la página principal
+            return render(request, 'mover_mesa.html')  # vuelve a la página principal
     else:
         #return HttpResponse("Método no permitido", status=405)
         #arduino = serial.Serial('COM4', 9600)  # en Linux: '/dev/ttyUSB0'
         #time.sleep(1)
-        arduino.write(b'mover_mesa')  # Enviar al Arduino
+        #arduino.write(b'mover_mesa')  # Enviar al Arduino
         return render(request, "mover_mesa.html")
 
 def reproducir_sismo(request):

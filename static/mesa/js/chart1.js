@@ -196,7 +196,7 @@ function agregarDato(nuevaEtiqueta, nuevoValor) {
 
 
 // Máximo de puntos visibles (10 segundos)
-const maxPuntos = 40;
+const maxPuntos = 50;
 
 // Función para agregar un nuevo dato con efecto deslizante
 function agregarDato(grafico_x,nuevaEtiqueta, nuevoValor) {
@@ -211,3 +211,41 @@ function agregarDato(grafico_x,nuevaEtiqueta, nuevoValor) {
 
   grafico_x.update();
 }
+
+
+const ws = new WebSocket("ws://localhost:8765");
+ws.onopen = () => log("Conectado al servidor WebSocket");
+ws.onmessage = (event) => log(event.data);
+ws.onclose = () => log("Desconectado del servidor");
+ws.onerror = (e) => log("Error: " + e);
+
+function log(msg) {
+  //console.log(JSON.parse(msg));
+  document.getElementById("numero_eje_x").innerHTML = JSON.parse(msg).distancia_ejex;
+  document.getElementById("aceleracion_eje_x").innerHTML = JSON.parse(msg).aceleracion_ejex;
+  document.getElementById("aceleracion_eje_y").innerHTML = JSON.parse(msg).aceleracion_ejey;
+  document.getElementById("aceleracion_eje_z").innerHTML = JSON.parse(msg).aceleracion_ejez;
+
+  agregarDato(grafico, tiempo, JSON.parse(msg).distancia_ejex);
+  agregarDato(grafico1, tiempo, JSON.parse(msg).aceleracion_ejex);
+  agregarDato(grafico2, tiempo, JSON.parse(msg).aceleracion_ejey);
+  agregarDato(grafico3, tiempo, JSON.parse(msg).aceleracion_ejez);
+}
+
+/*
+const rango = document.getElementById("customRange1").value;
+const valor = document.getElementById("valor");
+
+rango.addEventListener("input", () => {
+  //valor.textContent = rango.value; // Muestra el valor en tiempo real
+  console.log(rango); // Aquí tienes el número al instante
+});*/
+
+// Cuando el usuario mueve el slider, enviamos el valor al Arduino
+$("#customRange1").on("input", function() {
+    let valorSlider = $(this).val();
+    console.log(valorSlider)
+      ws.send(valorSlider);
+      log("Mensaje enviado: " + valorSlider);
+    //enviarDatos(valorSlider);
+});
