@@ -214,10 +214,10 @@ function agregarDato(grafico_x,nuevaEtiqueta, nuevoValor) {
 
 
 const ws = new WebSocket("ws://localhost:8765");
-ws.onopen = () => log("Conectado al servidor WebSocket");
+ws.onopen = () => console.log("websocket conectado");
 ws.onmessage = (event) => log(event.data);
-ws.onclose = () => log("Desconectado del servidor");
-ws.onerror = (e) => log("Error: " + e);
+//ws.onclose = () => log("Desconectado del servidor");
+ws.onerror = (e) => console.log("websocket conectado"+e);
 
 function log(msg) {
   //console.log(JSON.parse(msg));

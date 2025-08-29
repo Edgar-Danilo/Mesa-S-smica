@@ -1,0 +1,31 @@
+<!-- Puedes guardar esto como client.html y abrirlo en tu navegador -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WebSocket Client</title>
+</head>
+<body>
+  <h2>WebSocket Client</h2>
+  <input id="msg" type="text" placeholder="Escribe un mensaje">
+  <button onclick="sendMessage()">Enviar</button>
+  <div id="log"></div>
+  <script>
+    // Cambia la IP por la de tu servidor si no es localhost
+    const ws = new WebSocket("ws://localhost:8765");
+    ws.onopen = () => log("Conectado al servidor WebSocket");
+    ws.onmessage = (event) => log("Mensaje recibido: " + event.data);
+    ws.onclose = () => log("Desconectado del servidor");
+    ws.onerror = (e) => log("Error: " + e);
+
+    function sendMessage() {
+      const msg = document.getElementById("msg").value;
+      ws.send(msg);
+      log("Mensaje enviado: " + msg);
+    }
+
+    function log(msg) {
+      document.getElementById("log").innerHTML = msg ;
+    }
+  </script>
+</body>
+</html>

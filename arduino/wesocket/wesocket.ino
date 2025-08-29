@@ -20,7 +20,7 @@ ingmoriot@gmail.com
 using namespace websockets;
 const char* ssid = "Redmi Note 13";           // Cambia por el nombre de tu red WiFi
 const char* password = "123456789"; 
-const char* websocket_server = "ws://10.53.70.247:8765"; // Cambia por la IP de tu PC
+//const char* websocket_server = "10.173.203.247"; // Cambia por la IP de tu PC
 
 #define LED 2
 
@@ -50,13 +50,11 @@ void setup() {
   Serial.println("\nConectado a WiFi");
 
   // Conectar al servidor WebSocket
-  if(client.connect("10.53.70.247", 8765, "/")) {
-    Serial.println("Conectado al servidor WebSocket");
-    client.onMessage(onMessageCallback);
-  } else {
-    Serial.println("No se pudo conectar al servidor WebSocket");
-    return;
-  }
+  while (!client.connect("10.173.203.247", 8765, "/")){
+    Serial.println("No se pudo conectar al servidor WebSocket conectando .............");
+    }
+  Serial.println("COnectado a wesocket");
+  client.onMessage(onMessageCallback);
 }
 
 void loop() {
@@ -83,5 +81,5 @@ void loop() {
   
   // Convertir a String para enviarlo
   client.send(output);
-  delay(20);
+  delay(10);
 }
