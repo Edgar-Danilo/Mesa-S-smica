@@ -50,7 +50,7 @@ void setup() {
   Serial.println("\nConectado a WiFi");
 
   // Conectar al servidor WebSocket
-  while (!client.connect("10.173.203.247", 8765, "/")){
+  while (!client.connect("10.195.118.247", 8765, "/")){
     Serial.println("No se pudo conectar al servidor WebSocket conectando .............");
     }
   Serial.println("COnectado a wesocket");

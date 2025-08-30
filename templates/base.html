@@ -15,6 +15,11 @@
     <link rel="stylesheet" href="{% static 'mesa/vendors/flag-icon-css/css/flag-icon.min.css'%}">
     <link rel="stylesheet" href="{% static 'mesa/vendors/owl-carousel-2/owl.carousel.min.css'%}">
     <link rel="stylesheet" href="{% static 'mesa/vendors/owl-carousel-2/owl.theme.default.min.css'%}">
+    
+    
+
+
+
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
@@ -22,6 +27,17 @@
     <link rel="stylesheet" href="{% static 'mesa/css/style.css'%}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{% static 'mesa/images/favicon.png'%}" />
+
+    <style>
+      .content-wrapper {
+          background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+          background-attachment: fixed;
+      }
+      .footer {
+    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+    background-attachment: fixed;
+}
+    </style>
   </head>
   <body>
     
@@ -140,21 +156,44 @@
             <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
               <span class="mdi mdi-menu"></span>
             </button>
-            <ul class="navbar-nav w-100">
-              <li class="nav-item w-100">
-                <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-                  <input type="text" class="form-control" placeholder="Search products">
-                </form>
-              </li>
+
             </ul>
             <ul class="navbar-nav navbar-nav-right">
-              <li class="nav-item dropdown d-none d-lg-block">
-                <a class="nav-link btn btn-success create-new-button card-body" id="boton-iniciar" aria-expanded="false" href="#">Iniciar</a>
 
-              </li>
+
+                  <div style="display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 20px;">
+                    <!-- Botón Reproducir -->
+                    <button class="btn btn-success" id="btn-play">
+                      <i class="mdi mdi-play"></i> Iniciar
+                    </button>
+
+                    <!-- Botón Pausar -->
+                    <button class="btn btn-warning" id="btn-pause">
+                      <i class="mdi mdi-pause"></i> Pausar
+                    </button>
+
+                    <!-- Botón Parar -->
+                    <button class="btn btn-danger" id="btn-stop">
+                      <i class="mdi mdi-stop"></i> Parar
+                    </button>
+
+                    <!-- Botón Reiniciar -->
+                    <button class="btn btn-info mr-5" id="btn-restart">
+                      <i class="mdi mdi-restart"></i> Reiniciar
+                    </button>
+
+
+                  </div>
               <li class="nav-item nav-settings d-none d-lg-block">
                 <a class="nav-link" href="#">
-                  <i class="mdi mdi-view-grid"></i>
+                  <i class="mdi">                     <!-- Indicador de tiempo -->
+                    <div style="font-size: 1.1rem; color: white; min-width: 20px; text-align: center;" id="tiempo">
+                      Fecha:  
+                    </div>
+                      <div class="ml-5" style="font-size: 1.1rem; color: white; min-width: 20px; text-align: center;" id="tiempo">
+                      6:01 PM 29/08/2025
+                    </div>
+                  </i>
                 </a>
               </li>
               <li class="nav-item dropdown border-left">
@@ -346,7 +385,17 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+
+    
     <script src="{% static 'mesa/js/chart1.js'%}"></script>
+
+
+        <!-- CSS de DataTables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <!-- jQuery (requerido por DataTables) -->
+    <!-- JS de DataTables -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
     <!-- End custom js for this page -->
   </body>
 </html>

@@ -53,14 +53,14 @@ def reproducir_sismo(request):
         if accion:
             #arduino = serial.Serial('COM4', 9600)  # en Linux: '/dev/ttyUSB0'
             #time.sleep(1)
-            arduino.write(accion.encode())  # Enviar al Arduino
-            #print("enviando datos a arduino")
+            #arduino.write(accion.encode())  # Enviar al Arduino
+            print("enviando datos a arduino")
         return render(request, 'reproducir_sismo.html')  # vuelve a la página principal
     else:
         #return HttpResponse("Método no permitido", status=405)
         #arduino = serial.Serial('COM4', 9600)  # en Linux: '/dev/ttyUSB0'
         #time.sleep(1)
-        arduino.write(b'reproducir_sismo')  # Enviar al Arduino
+        #arduino.write(b'reproducir_sismo')  # Enviar al Arduino
         return render(request, "reproducir_sismo.html")
 
 def crear_sismo(request):
@@ -70,14 +70,14 @@ def crear_sismo(request):
         if accion:
             #arduino = serial.Serial('COM4', 9600)  # en Linux: '/dev/ttyUSB0'
             #time.sleep(1)
-            arduino.write(accion.encode())  # Enviar al Arduino
-            #print("enviando datos a arduino")
+            #arduino.write(accion.encode())  # Enviar al Arduino
+            print("enviando datos a arduino")
         return render(request, 'crear_sismo.html')  # vuelve a la página principal
     else:
         #return HttpResponse("Método no permitido", status=405)
           # en Linux: '/dev/ttyUSB0'
         #time.sleep(1)
-        arduino.write(b'crear_sismo')  # Enviar al Arduino
+        #arduino.write(b'crear_sismo')  # Enviar al Arduino
         return render(request, "crear_sismo.html")
 
 

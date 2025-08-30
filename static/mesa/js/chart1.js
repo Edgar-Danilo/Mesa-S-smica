@@ -171,20 +171,9 @@ function miFuncion() {
     //actualizarDato()
 }
 
-document.getElementById("iniciar").addEventListener("click", function() {
-    if (!intervalo) { // Evita múltiples intervalos
-        intervalo = setInterval(actualizarDato, 95); // Se ejecuta cada 1 segundo
-        console.log("Bucle iniciado");
-    }
-});
 
-document.getElementById("detener").addEventListener("click", function() {
-    if (intervalo) {
-        clearInterval(intervalo);
-        intervalo = null;
-        console.log("Bucle detenido");
-    }
-});
+
+
 /*
 
 // Función para agregar un nuevo dato
@@ -248,4 +237,16 @@ $("#customRange1").on("input", function() {
       ws.send(valorSlider);
       log("Mensaje enviado: " + valorSlider);
     //enviarDatos(valorSlider);
+});
+
+//new DataTable('#example');
+
+$(document).ready(function() {
+    $('#example').DataTable({
+        "pageLength": 10, // Número de filas por página
+        "lengthMenu": [5, 10, 25, 50, 100], // Opciones de paginación
+        "language": { // Traducción al español
+            "url": "https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json"
+        }
+    });
 });

@@ -4,9 +4,829 @@
 
 {% block content %}
 
+<style>
+.dataTables_length select {
+    background-color: black !important;
+    color: white !important;
+    border: 1px solid #6c757d; /* opcional: borde gris */
+    border-radius: 4px;        /* opcional: bordes redondeados */
+    padding: 4px 8px;          /* opcional: espaciado interno */
+}
+
+</style>
+
+<div class="text-center mb-3">
+  <h1 class="text-white">REPRODUCIR UN SISMO</h1>
+  
+</div>
+
+<div style="display: flex; justify-content: center; align-items: center;">
+    <form>
+    <table style="width: 80%; border-spacing: 15px;">
+        <tr>
+        <td>
+            <label for="usuario">Nombre de Usuario</label>
+            <input type="text" class="form-control" id="usuario" placeholder="Escriba su nombre">
+            
+            <small class="form-text text-muted">Escriba su nombre para identificar a quien va dirijido el informe</small>
+        </td>
+        <td>
+            <label for="sismo" class="ml-2">Nombre de Sismo</label>
+            <div class="d-flex">
+                <input type="text" class="form-control ml-2" id="sismo" placeholder="Seleccione un Sismo">
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">Buscar</button>
+
+                <!-- Modal -->
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">Seleccione un Sismo</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                        <table id="example" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Descripcion</th>
+                            <th>Fecha de creacion</th>
+                            <th>Fecha del sismo</th>
+                            <th>Magnitud</th>
+                            <th>Seleccionar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Terremoto Japon</td>
+                            <td>surguio en japo causo mas de 200000 de muertos</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+                            <td>2011-04-25</td>
+                            <td>$320,800</td>
+                        </tr>
+                        <tr>
+                            <td>Garrett Winters</td>
+                            <td>Accountant</td>
+                            <td>Tokyo</td>
+                            <td>63</td>
+                            <td>2011-07-25</td>
+                            <td>$170,750</td>
+                        </tr>
+                        <tr>
+                            <td>Ashton Cox</td>
+                            <td>Junior Technical Author</td>
+                            <td>San Francisco</td>
+                            <td>66</td>
+                            <td>2009-01-12</td>
+                            <td><button type="button" class="btn btn-success">Seleccionar</button></td>
+                        </tr>
+                        <tr>
+                            <td>Cedric Kelly</td>
+                            <td>Senior JavaScript Developer</td>
+                            <td>Edinburgh</td>
+                            <td>22</td>
+                            <td>2012-03-29</td>
+                            <td>$433,060</td>
+                        </tr>
+                        <tr>
+                            <td>Aiti 2014</td>
+                            <td>Este terremoto dejos mas de 20000 muertos </td>
+                            <td>29/08/2025</td>
+                            <td>24/05/2014</td>
+                            <td>7.8</td>
+                            <td><button type="button" class="btn btn-success">Seleccionar</button></td>
+                        </tr>
+                        <tr>
+                            <td>Brielle Williamson</td>
+                            <td>Integration Specialist</td>
+                            <td>New York</td>
+                            <td>61</td>
+                            <td>2012-12-02</td>
+                            <td><button type="button" class="btn btn-success">Seleccionar</button></td>
+                        </tr>
+                        <tr>
+                            <td>Herrod Chandler</td>
+                            <td>Sales Assistant</td>
+                            <td>San Francisco</td>
+                            <td>59</td>
+                            <td>2012-08-06</td>
+                            <td>$137,500</td>
+                        </tr>
+                        <tr>
+                            <td>Rhona Davidson</td>
+                            <td>Integration Specialist</td>
+                            <td>Tokyo</td>
+                            <td>55</td>
+                            <td>2010-10-14</td>
+                            <td>$327,900</td>
+                        </tr>
+                        <tr>
+                            <td>Colleen Hurst</td>
+                            <td>JavaScript Developer</td>
+                            <td>San Francisco</td>
+                            <td>39</td>
+                            <td>2009-09-15</td>
+                            <td>$205,500</td>
+                        </tr>
+                        <tr>
+                            <td>Sonya Frost</td>
+                            <td>Software Engineer</td>
+                            <td>Edinburgh</td>
+                            <td>23</td>
+                            <td>2008-12-13</td>
+                            <td>$103,600</td>
+                        </tr>
+                        <tr>
+                            <td>Jena Gaines</td>
+                            <td>Office Manager</td>
+                            <td>London</td>
+                            <td>30</td>
+                            <td>2008-12-19</td>
+                            <td>$90,560</td>
+                        </tr>
+                        <tr>
+                            <td>Quinn Flynn</td>
+                            <td>Support Lead</td>
+                            <td>Edinburgh</td>
+                            <td>22</td>
+                            <td>2013-03-03</td>
+                            <td>$342,000</td>
+                        </tr>
+                        <tr>
+                            <td>Charde Marshall</td>
+                            <td>Regional Director</td>
+                            <td>San Francisco</td>
+                            <td>36</td>
+                            <td>2008-10-16</td>
+                            <td>$470,600</td>
+                        </tr>
+                        <tr>
+                            <td>Haley Kennedy</td>
+                            <td>Senior Marketing Designer</td>
+                            <td>London</td>
+                            <td>43</td>
+                            <td>2012-12-18</td>
+                            <td>$313,500</td>
+                        </tr>
+                        <tr>
+                            <td>Tatyana Fitzpatrick</td>
+                            <td>Regional Director</td>
+                            <td>London</td>
+                            <td>19</td>
+                            <td>2010-03-17</td>
+                            <td>$385,750</td>
+                        </tr>
+                        <tr>
+                            <td>Michael Silva</td>
+                            <td>Marketing Designer</td>
+                            <td>London</td>
+                            <td>66</td>
+                            <td>2012-11-27</td>
+                            <td>$198,500</td>
+                        </tr>
+                        <tr>
+                            <td>Paul Byrd</td>
+                            <td>Chief Financial Officer (CFO)</td>
+                            <td>New York</td>
+                            <td>64</td>
+                            <td>2010-06-09</td>
+                            <td>$725,000</td>
+                        </tr>
+                        <tr>
+                            <td>Gloria Little</td>
+                            <td>Systems Administrator</td>
+                            <td>New York</td>
+                            <td>59</td>
+                            <td>2009-04-10</td>
+                            <td>$237,500</td>
+                        </tr>
+                        <tr>
+                            <td>Bradley Greer</td>
+                            <td>Software Engineer</td>
+                            <td>London</td>
+                            <td>41</td>
+                            <td>2012-10-13</td>
+                            <td><button type="button" class="btn btn-success">Seleccionar</button></td>
+                        </tr>
+                        <tr>
+                            <td>Dai Rios</td>
+                            <td>Personnel Lead</td>
+                            <td>Edinburgh</td>
+                            <td>35</td>
+                            <td>2012-09-26</td>
+                            <td>$217,500</td>
+                        </tr>
+                        <tr>
+                            <td>Jenette Caldwell</td>
+                            <td>Development Lead</td>
+                            <td>New York</td>
+                            <td>30</td>
+                            <td>2011-09-03</td>
+                            <td>$345,000</td>
+                        </tr>
+                        <tr>
+                            <td>Yuri Berry</td>
+                            <td>Chief Marketing Officer (CMO)</td>
+                            <td>New York</td>
+                            <td>40</td>
+                            <td>2009-06-25</td>
+                            <td>$675,000</td>
+                        </tr>
+                        <tr>
+                            <td>Caesar Vance</td>
+                            <td>Pre-Sales Support</td>
+                            <td>New York</td>
+                            <td>21</td>
+                            <td>2011-12-12</td>
+                            <td>$106,450</td>
+                        </tr>
+                        <tr>
+                            <td>Doris Wilder</td>
+                            <td>Sales Assistant</td>
+                            <td>Sydney</td>
+                            <td>23</td>
+                            <td>2010-09-20</td>
+                            <td>$85,600</td>
+                        </tr>
+                        <tr>
+                            <td>Angelica Ramos</td>
+                            <td>Chief Executive Officer (CEO)</td>
+                            <td>London</td>
+                            <td>47</td>
+                            <td>2009-10-09</td>
+                            <td><button type="button" class="btn btn-success">Seleccionar</button></td>
+                        </tr>
+                        <tr>
+                            <td>Gavin Joyce</td>
+                            <td>Developer</td>
+                            <td>Edinburgh</td>
+                            <td>42</td>
+                            <td>2010-12-22</td>
+                            <td>$92,575</td>
+                        </tr>
+                        <tr>
+                            <td>Jennifer Chang</td>
+                            <td>Regional Director</td>
+                            <td>Singapore</td>
+                            <td>28</td>
+                            <td>2010-11-14</td>
+                            <td>$357,650</td>
+                        </tr>
+                        <tr>
+                            <td>Brenden Wagner</td>
+                            <td>Software Engineer</td>
+                            <td>San Francisco</td>
+                            <td>28</td>
+                            <td>2011-06-07</td>
+                            <td><button type="button" class="btn btn-success">Seleccionar</button></td>
+                        </tr>
+                        <tr>
+                            <td>Fiona Green</td>
+                            <td>Chief Operating Officer (COO)</td>
+                            <td>San Francisco</td>
+                            <td>48</td>
+                            <td>2010-03-11</td>
+                            <td>$850,000</td>
+                        </tr>
+                        <tr>
+                            <td>Shou Itou</td>
+                            <td>Regional Marketing</td>
+                            <td>Tokyo</td>
+                            <td>20</td>
+                            <td>2011-08-14</td>
+                            <td>$163,000</td>
+                        </tr>
+                        <tr>
+                            <td>Michelle House</td>
+                            <td>Integration Specialist</td>
+                            <td>Sydney</td>
+                            <td>37</td>
+                            <td>2011-06-02</td>
+                            <td>$95,400</td>
+                        </tr>
+                        <tr>
+                            <td>Suki Burks</td>
+                            <td>Developer</td>
+                            <td>London</td>
+                            <td>53</td>
+                            <td>2009-10-22</td>
+                            <td>$114,500</td>
+                        </tr>
+                        <tr>
+                            <td>Prescott Bartlett</td>
+                            <td>Technical Author</td>
+                            <td>London</td>
+                            <td>27</td>
+                            <td>2011-05-07</td>
+                            <td>$145,000</td>
+                        </tr>
+                        <tr>
+                            <td>Gavin Cortez</td>
+                            <td>Team Leader</td>
+                            <td>San Francisco</td>
+                            <td>22</td>
+                            <td>2008-10-26</td>
+                            <td>$235,500</td>
+                        </tr>
+                        <tr>
+                            <td>Martena Mccray</td>
+                            <td>Post-Sales support</td>
+                            <td>Edinburgh</td>
+                            <td>46</td>
+                            <td>2011-03-09</td>
+                            <td>$324,050</td>
+                        </tr>
+                        <tr>
+                            <td>Unity Butler</td>
+                            <td>Marketing Designer</td>
+                            <td>San Francisco</td>
+                            <td>47</td>
+                            <td>2009-12-09</td>
+                            <td>$85,675</td>
+                        </tr>
+                        <tr>
+                            <td>Howard Hatfield</td>
+                            <td>Office Manager</td>
+                            <td>San Francisco</td>
+                            <td>51</td>
+                            <td>2008-12-16</td>
+                            <td>$164,500</td>
+                        </tr>
+                        <tr>
+                            <td>Hope Fuentes</td>
+                            <td>Secretary</td>
+                            <td>San Francisco</td>
+                            <td>41</td>
+                            <td>2010-02-12</td>
+                            <td>$109,850</td>
+                        </tr>
+                        <tr>
+                            <td>Vivian Harrell</td>
+                            <td>Financial Controller</td>
+                            <td>San Francisco</td>
+                            <td>62</td>
+                            <td>2009-02-14</td>
+                            <td>$452,500</td>
+                        </tr>
+                        <tr>
+                            <td>Timothy Mooney</td>
+                            <td>Office Manager</td>
+                            <td>London</td>
+                            <td>37</td>
+                            <td>2008-12-11</td>
+                            <td>$136,200</td>
+                        </tr>
+                        <tr>
+                            <td>Jackson Bradshaw</td>
+                            <td>Director</td>
+                            <td>New York</td>
+                            <td>65</td>
+                            <td>2008-09-26</td>
+                            <td>$645,750</td>
+                        </tr>
+                        <tr>
+                            <td>Olivia Liang</td>
+                            <td>Support Engineer</td>
+                            <td>Singapore</td>
+                            <td>64</td>
+                            <td>2011-02-03</td>
+                            <td>$234,500</td>
+                        </tr>
+                        <tr>
+                            <td>Bruno Nash</td>
+                            <td>Software Engineer</td>
+                            <td>London</td>
+                            <td>38</td>
+                            <td>2011-05-03</td>
+                            <td><button type="button" class="btn btn-success">Seleccionar</button></td>
+                        </tr>
+                        <tr>
+                            <td>Sakura Yamamoto</td>
+                            <td>Support Engineer</td>
+                            <td>Tokyo</td>
+                            <td>37</td>
+                            <td>2009-08-19</td>
+                            <td>$139,575</td>
+                        </tr>
+                        <tr>
+                            <td>Thor Walton</td>
+                            <td>Developer</td>
+                            <td>New York</td>
+                            <td>61</td>
+                            <td>2013-08-11</td>
+                            <td>$98,540</td>
+                        </tr>
+                        <tr>
+                            <td>Finn Camacho</td>
+                            <td>Support Engineer</td>
+                            <td>San Francisco</td>
+                            <td>47</td>
+                            <td>2009-07-07</td>
+                            <td>$87,500</td>
+                        </tr>
+                        <tr>
+                            <td>Serge Baldwin</td>
+                            <td>Data Coordinator</td>
+                            <td>Singapore</td>
+                            <td>64</td>
+                            <td>2012-04-09</td>
+                            <td>$138,575</td>
+                        </tr>
+                        <tr>
+                            <td>Zenaida Frank</td>
+                            <td>Software Engineer</td>
+                            <td>New York</td>
+                            <td>63</td>
+                            <td>2010-01-04</td>
+                            <td>$125,250</td>
+                        </tr>
+                        <tr>
+                            <td>Zorita Serrano</td>
+                            <td>Software Engineer</td>
+                            <td>San Francisco</td>
+                            <td>56</td>
+                            <td>2012-06-01</td>
+                            <td>$115,000</td>
+                        </tr>
+                        <tr>
+                            <td>Jennifer Acosta</td>
+                            <td>Junior JavaScript Developer</td>
+                            <td>Edinburgh</td>
+                            <td>43</td>
+                            <td>2013-02-01</td>
+                            <td>$75,650</td>
+                        </tr>
+                        <tr>
+                            <td>Cara Stevens</td>
+                            <td>Sales Assistant</td>
+                            <td>New York</td>
+                            <td>46</td>
+                            <td>2011-12-06</td>
+                            <td>$145,600</td>
+                        </tr>
+                        <tr>
+                            <td>Hermione Butler</td>
+                            <td>Regional Director</td>
+                            <td>London</td>
+                            <td>47</td>
+                            <td>2011-03-21</td>
+                            <td>$356,250</td>
+                        </tr>
+                        <tr>
+                            <td>Lael Greer</td>
+                            <td>Systems Administrator</td>
+                            <td>London</td>
+                            <td>21</td>
+                            <td>2009-02-27</td>
+                            <td>$103,500</td>
+                        </tr>
+                        <tr>
+                            <td>Jonas Alexander</td>
+                            <td>Developer</td>
+                            <td>San Francisco</td>
+                            <td>30</td>
+                            <td>2010-07-14</td>
+                            <td>$86,500</td>
+                        </tr>
+                        <tr>
+                            <td>Shad Decker</td>
+                            <td>Regional Director</td>
+                            <td>Edinburgh</td>
+                            <td>51</td>
+                            <td>2008-11-13</td>
+                            <td>$183,000</td>
+                        </tr>
+                        <tr>
+                            <td>Michael Bruce</td>
+                            <td>JavaScript Developer</td>
+                            <td>Singapore</td>
+                            <td>29</td>
+                            <td>2011-06-27</td>
+                            <td>$183,000</td>
+                        </tr>
+                        <tr>
+                            <td>Donna Snider</td>
+                            <td>Customer Support</td>
+                            <td>New York</td>
+                            <td>27</td>
+                            <td>2011-01-25</td>
+                            <td>$112,000</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Office</th>
+                            <th>Age</th>
+                            <th>Start date</th>
+                            <th>Salary</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+            </div>
+        </div>
+        </div>
+            </div>
+            <small class="form-text text-muted ml-2">Seleccione un sismo predeterminado del sistema.</small>
+        </td>
+        <td>
+            <label for="portico" class="ml-4">Nombre de Pórtico</label>
+            <input type="text" class="form-control ml-4" id="portico" placeholder="Escriba nombre de su pórtico">
+            <small class="form-text text-muted ml-4">Escribe el nombre del portico que esta ensayando</small>
+        </td>
+        </tr>
+
+        <tr>
+            <td>
+
+                    <label class="mt-2" for="inputState">Material del Portico</label>
+                    <select id="inputState" class="form-control" style="color: white;">
+                        <option selected>Choose...</option>
+                        <option>Madera</option>
+                        <option>Concreto</option>
+                        <option>Plastico</option>
+                    </select>
+                    <small class="form-text text-muted">Elije el material de la cual esta fabricado el portico.</small>
+            
+                
+            </td>
+            <td>
+                <label for="peso" class="ml-2 mt-2">Peso de Pórtico</label>
+                <input type="text" class="form-control ml-2" id="peso" placeholder="Escriba el peso de su pórtico">
+                <small class="form-text text-muted ml-2">Digite el peso de su portico en Kilogramos (Kg).</small>
+            </td>
+            <td>
+                <label for="fc" class="ml-4 mt-2">f'c</label>
+                <input type="text" class="form-control ml-4" id="fc" placeholder="Escriba la resistencia del material">
+                <small class="form-text text-muted ml-4">Digite la resistencia del material en Meegapascales (Mpa).</small>
+            </td>
+        </tr>
+
+        <tr>
+
+            <td>
+                <label class="ml-4 mt-2">
+                    <input class="form-check-input" type="checkbox"> Sensor Base
+                </label>
+            </td>
+            <td>
+                <label class="ml-4 mt-2">
+                    <input class="form-check-input" type="checkbox"> Sensor 1
+                </label>
+            </td>
+            <td>
+                <label class="ml-5 mt-2">
+                    <input class="form-check-input" type="checkbox"> Sensor 2
+                </label>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label class="ml-4"><input class="form-check-input" type="checkbox"> Sensor 3</label>
+            </td>
+            <td>
+                <label class="ml-4"><input class="form-check-input" type="checkbox" disabled> Sensor 4</label>
+            </td>
+            <td>
+                <button type="button" class="btn btn-primary mb-3 ml-4" style="margin-top: 15px;">Generar y Exportar Informe</button>
+            </td>
+        </tr>
+    </table>
+
+    </form>
+</div>
 
 
-<h1 class="text-white">REPRODUCIR UN SISMO</h1>
+<!--- CHART-->
+<div class="row justify-content-center align-items-center">
+
+
+  <div class="col-lg-5 grid-margin stretch-card">
+    
+    <div class="card">
+      
+      <div class="card-body">
+        <h4 class="card-title text-center">Distancia eje X</h4>
+        <div class="row">
+          
+          
+          <!-- Gráfico -->
+          <div class="col-8 d-flex align-items-center">
+            <canvas id="lineChart" style="height:250px; width:100%;"></canvas>
+          </div>
+
+          <!-- Valores -->
+          <div class="col-4 d-flex flex-column justify-content-center align-items-center">
+
+
+
+
+            
+            <!-- Aceleracion Eje X -->
+            <div class="d-flex align-items-center">
+              <h3 class="mb-0" id="numero_eje_x">0</h3>
+              <div class="ml-2">cm</div>
+            </div>
+            <h5 class="text-muted font-weight-normal text-center">Distancia Eje X</h5>
+
+            <!-- Max -->
+            <div class="d-flex align-items-center mt-3">
+              <h3 class="mb-0">0</h3>
+              <div class="ml-2">cm</div>
+            </div>
+            <h5 class="text-muted font-weight-normal text-center">Max.</h5>
+
+            <!-- Min -->
+            <div class="d-flex align-items-center mt-3">
+              <h3 class="mb-0">0</h3>
+              <div class="ml-2">cm</div>
+            </div>
+            <h5 class="text-muted font-weight-normal text-center">Min.</h5>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="col-lg-5 grid-margin stretch-card">
+    
+    <div class="card">
+      
+      <div class="card-body">
+        <h4 class="card-title text-center">Aceleracion eje X</h4>
+        <div class="row">
+          
+          
+          <!-- Gráfico -->
+          <div class="col-8 d-flex align-items-center">
+            <canvas id="lineChart1" style="height:250px; width:100%;"></canvas>
+          </div>
+
+          <!-- Valores -->
+          <div class="col-4 d-flex flex-column justify-content-center align-items-center">
+            
+            <!-- Aceleracion Eje X -->
+            <div class="d-flex align-items-center">
+              <h3 class="mb-0" id="aceleracion_eje_x">0</h3>
+              <div class="ml-2">cm/s^2</div>
+            </div>
+            <h5 class="text-muted font-weight-normal text-center">Aceleracion Eje X</h5>
+
+            <!-- Max -->
+            <div class="d-flex align-items-center mt-3">
+              <h3 class="mb-0">0</h3>
+              <div class="ml-2">cm/s^2</div>
+            </div>
+            <h5 class="text-muted font-weight-normal text-center">Max.</h5>
+
+            <!-- Min -->
+            <div class="d-flex align-items-center mt-3">
+              <h3 class="mb-0">0</h3>
+              <div class="ml-2">cm/s^2</div>
+            </div>
+            <h5 class="text-muted font-weight-normal text-center">Min.</h5>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="col-lg-5 grid-margin stretch-card">
+    
+    <div class="card">
+      
+      <div class="card-body">
+        <h4 class="card-title text-center">Aceleracion eje Y</h4>
+        <div class="row">
+          
+          
+          <!-- Gráfico -->
+          <div class="col-8 d-flex align-items-center">
+            <canvas id="lineChart2" style="height:250px; width:100%;"></canvas>
+          </div>
+
+          <!-- Valores -->
+          <div class="col-4 d-flex flex-column justify-content-center align-items-center">
+            
+            <!-- Aceleracion Eje X -->
+            <div class="d-flex align-items-center">
+              <h3 class="mb-0" id="aceleracion_eje_y">0</h3>
+              <div class="ml-2">cm/s^2</div>
+            </div>
+            <h5 class="text-muted font-weight-normal text-center">Aceleracion Eje Y</h5>
+
+            <!-- Max -->
+            <div class="d-flex align-items-center mt-3">
+              <h3 class="mb-0">0</h3>
+              <div class="ml-2">cm/s^2</div>
+            </div>
+            <h5 class="text-muted font-weight-normal text-center">Max.</h5>
+
+            <!-- Min -->
+            <div class="d-flex align-items-center mt-3">
+              <h3 class="mb-0">0</h3>
+              <div class="ml-2">cm/s^2</div>
+            </div>
+            <h5 class="text-muted font-weight-normal text-center">Min.</h5>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-lg-5 grid-margin stretch-card">
+    
+    <div class="card">
+      
+      <div class="card-body">
+        <h4 class="card-title text-center">Aceleracion eje Z</h4>
+        <div class="row">
+          
+          
+          <!-- Gráfico -->
+          <div class="col-8 d-flex align-items-center">
+            <canvas id="lineChart3" style="height:250px; width:100%;"></canvas>
+          </div>
+
+          <!-- Valores -->
+          <div class="col-4 d-flex flex-column justify-content-center align-items-center">
+            
+            <!-- Aceleracion Eje X -->
+            <div class="d-flex align-items-center">
+              <h3 class="mb-0" id="aceleracion_eje_z">0</h3>
+              <div class="ml-2">cm/s^2</div>
+            </div>
+            <h5 class="text-muted font-weight-normal text-center">Aceleracion Eje z</h5>
+
+            <!-- Max -->
+            <div class="d-flex align-items-center mt-3">
+              <h3 class="mb-0">0</h3>
+              <div class="ml-2">cm/s^2</div>
+            </div>
+            <h5 class="text-muted font-weight-normal text-center">Max.</h5>
+
+            <!-- Min -->
+            <div class="d-flex align-items-center mt-3">
+              <h3 class="mb-0">0</h3>
+              <div class="ml-2">cm/s^2</div>
+            </div>
+            <h5 class="text-muted font-weight-normal text-center">Min.</h5>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<style>
+.custom-range {
+  width: 35vw; /* ancho de la barra deslizadora */
+}
+
+.custom-alto {
+  height: 400px;  /* ancho de la barra deslizadora */
+}
+/* Escala de valores debajo del slider */
+.range-scale {
+  display: flex;
+  justify-content: space-between;
+  width: 35vw;  /* mismo ancho que el slider */
+  margin-top: 5px;
+  font-size: 14px;
+  color: white;
+}
+</style>
+
 
 
 {% endblock %}
